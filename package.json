@@ -1,6 +1,6 @@
 {
   "name": "kanye",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Smash your keyboards with ease",
   "main": "kanye.js",
   "scripts": {
