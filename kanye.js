@@ -10,13 +10,7 @@ var keymap = {
 };
 var handlers = {};
 
-bind();
-
-function bind (remove) {
-  var op = remove ? 'remove' : 'add';
-  crossvent[op](window, 'keypress', keypress);
-  crossvent[op](window, 'keydown', keydown);
-}
+crossvent.add(window, 'keydown', keydown);
 
 function clear (context) {
   if (context) {
@@ -92,17 +86,9 @@ function getKeyCode (e) {
   return e.which || e.keyCode || e.charCode;
 }
 
-function keypress (e) {
-  var code = getKeyCode(e);
-  var key = String.fromCharCode(code);
-  if (key && keymap[code] === void 0) {
-    handle(key, e);
-  }
-}
-
 function keydown (e) {
   var code = getKeyCode(e);
-  var key = keymap[code];
+  var key = keymap[code] || String.fromCharCode(code);
   if (key) {
     handle(key, e);
   }
