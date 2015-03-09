@@ -105,7 +105,7 @@ function parseKeyCombo (key, e) {
   if (e.ctrlKey ^ e.metaKey) {
     combo.unshift('cmd');
   }
-  return combo.join('+');
+  return combo.join('+').toLowerCase();
 }
 
 function handle (key, e) {

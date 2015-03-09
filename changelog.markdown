@@ -1,4 +1,4 @@
-# 2.0.1 Teapot
+# 2.0.2 Teapot
 
 - Simplified event binding logic into a single event listener
 
