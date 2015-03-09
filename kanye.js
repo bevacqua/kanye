@@ -10,13 +10,7 @@ var keymap = {
 };
 var handlers = {};
 
-function listen () {
-  bind();
-}
-
-function unlisten () {
-  bind(true);
-}
+bind();
 
 function bind (remove) {
   var op = remove ? 'remove' : 'add';
@@ -137,8 +131,24 @@ function handle (key, e) {
     }
   }
 
+  function filtered (handler) {
+    var filter = handler.filter;
+    if (typeof filter === 'string' && sektor.matchesSelector(e.target, filter) === false) {
+      return true;
+    }
+    var context = e.target;
+    if (filter) {
+      while (context.parentElement && context !== filter) {
+        context = context.parentElement;
+      }
+      if (context !== filter) {
+        return true;
+      }
+    }
+  }
+
   function exec (handler) {
-    if (handler.filter && sektor.matchesSelector(e.target, handler.filter) === false) {
+    if (filtered(handler)) {
       return;
     }
     handler.handle(e);
@@ -146,8 +156,6 @@ function handle (key, e) {
 }
 
 module.exports = {
-  listen: listen,
-  unlisten: unlisten,
   on: on,
   off: off,
   clear: clear
