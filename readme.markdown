@@ -4,10 +4,23 @@
 
 Browser support includes every sane browser and **IE7+**.
 
+# Install
+
+From `npm`
+
+```shell
+npm install kanye --save
+```
+
+From `bower`
+
+```shell
+bower install kanye --save
+```
+
 # API
 
 Kanye exposes a few methods for interacting with keyboard events.
-
 
 ## `kanye.listen()`
 
