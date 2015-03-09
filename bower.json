@@ -1,0 +1,11 @@
+{
+  "name": "kanye",
+  "version": "1.0.0",
+  "description": "Smash your keyboards with ease",
+  "main": "dist/kanye.js",
+  "homepage": "https://github.com/bevacqua/kanye",
+  "authors": [
+    "Nicolas Bevacqua <nicolasbevacqua@gmail.com>"
+  ],
+  "license": "MIT"
+}
