@@ -119,17 +119,20 @@ function handle (key, e) {
 
   function filtered (handler) {
     var filter = handler.filter;
-    if (typeof filter === 'string' && sektor.matchesSelector(e.target, filter) === false) {
-      return true;
+    if (!filter) {
+      return;
     }
+
     var context = e.target;
-    if (filter) {
-      while (context.parentElement && context !== filter) {
-        context = context.parentElement;
-      }
-      if (context !== filter) {
-        return true;
-      }
+    var selector = typeof filter === 'string';
+    if (selector) {
+      return sektor.matchesSelector(e.target, filter) === false;
+    }
+    while (context.parentElement && context !== filter) {
+      context = context.parentElement;
+    }
+    if (context !== filter) {
+      return true;
     }
   }
 

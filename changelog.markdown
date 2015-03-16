@@ -1,3 +1,7 @@
+# 2.0.3 Mug Lock
+
+- Fixed a bug where events would be incorrectly filtered
+
 # 2.0.2 Teapot
 
 - Simplified event binding logic into a single event listener
