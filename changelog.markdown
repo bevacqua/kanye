@@ -1,3 +1,7 @@
+# 2.0.4 Mug Look
+
+- Expose `handlers` so that you can manipulate them directly
+
 # 2.0.3 Mug Lock
 
 - Fixed a bug where events would be incorrectly filtered

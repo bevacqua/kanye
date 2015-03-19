@@ -147,5 +147,6 @@ function handle (key, e) {
 module.exports = {
   on: on,
   off: off,
-  clear: clear
+  clear: clear,
+  handlers: handlers
 };
