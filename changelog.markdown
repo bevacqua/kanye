@@ -1,4 +1,4 @@
-# 3.0.0 Mug Face
+# 3.0.1 Mug Face
 
 - Changed the public API in favor of a single `options` object
 

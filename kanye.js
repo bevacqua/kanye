@@ -135,7 +135,7 @@ function handle (key, e) {
   function exec (handler) {
     if (filtered(handler)) {
       return;
-    }console.log(handler);
+    }
     handler.handle(e);
   }
 }
