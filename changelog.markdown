@@ -1,3 +1,7 @@
+# 3.0.0 Mug Face
+
+- Changed the public API in favor of a single `options` object
+
 # 2.0.4 Mug Look
 
 - Expose `handlers` so that you can manipulate them directly

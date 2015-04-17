@@ -22,16 +22,13 @@ function clear (context) {
   }
 }
 
-function switchboard (then, combo, filter, fn, ctx) {
-  if (ctx === void 0 && fn === void 0) {
-    fn = filter;
-    filter = null;
-  } else if (typeof fn !== 'function') {
-    ctx = fn;
-    fn = filter;
+function switchboard (then, combo, options, fn) {
+  if (fn === void 0) {
+    fn = options;
+    options = {};
   }
 
-  var context = ctx || 'defaults';
+  var context = options.context || 'defaults';
 
   if (!fn) {
     return;
@@ -48,17 +45,17 @@ function switchboard (then, combo, filter, fn, ctx) {
     if (c.length === 0) {
       return;
     }
-    then(handlers[context], c, fn, filter);
+    then(handlers[context], c, options, fn);
   }
 }
 
-function on (combo, filter, fn, ctx) {
-  switchboard(add, combo, filter, fn, ctx);
+function on (combo, options, fn) {
+  switchboard(add, combo, options, fn);
 
-  function add (area, key, fn, filter) {
+  function add (area, key, options, fn) {
     var handler = {
       handle: fn,
-      filter: filter
+      filter: options.filter
     };
     if (area[key]) {
       area[key].push(handler);
@@ -68,16 +65,16 @@ function on (combo, filter, fn, ctx) {
   }
 }
 
-function off (combo, filter, fn, ctx) {
-  switchboard(rm, combo, filter, fn, ctx);
+function off (combo, options, fn) {
+  switchboard(rm, combo, options, fn);
 
-  function rm (area, key, fn, filter) {
+  function rm (area, key, options, fn) {
     if (area[key]) {
       area[key] = area[key].filter(matching);
     }
 
     function matching (handler) {
-      return handler.handle === fn && handler.filter === filter;
+      return handler.handle === fn && handler.filter === options.filter;
     }
   }
 }
@@ -123,7 +120,6 @@ function handle (key, e) {
       return;
     }
 
-    var context = e.target;
     var selector = typeof filter === 'string';
     if (selector) {
       return sektor.matchesSelector(e.target, filter) === false;
@@ -139,7 +135,7 @@ function handle (key, e) {
   function exec (handler) {
     if (filtered(handler)) {
       return;
-    }
+    }console.log(handler);
     handler.handle(e);
   }
 }

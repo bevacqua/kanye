@@ -22,18 +22,18 @@ bower install kanye --save
 
 Kanye exposes a few methods for interacting with keyboard events.
 
-## `kanye.on(combo, filter?, listener, ctx?)`
+## `kanye.on(combo, options?, listener)`
 
 Adds an event listener `listener` to the registry. This event listener will fire only when the user input is `combo`, and it can be optionally filtered by a `filter` selector.
 
-- `combo` is expected to be a human-readable keyboard input string such as `cmd+a` or `cmd+shift+b`.
-- `filter` is entirely optional, and helps you filter out the event target based on a selector or a DOM element
-- `listener` is the actual event listener that will be invoked when your query is satistied
-- `context` is also optional, and it allows you to define a group of event listeners that you can `.clear` in the future
+The `combo` is expected to be a human-readable keyboard input string such as `cmd+a` or `cmd+shift+b`. If the conditions are satisfied, `listener` will be invoked passing the `event` as an argument. Options are outlined below and they can be omitted.
 
-## `kanye.off(combo, filter?, listener, ctx?)`
+- `filter` allows you to filter out the event target based on a selector or a DOM element
+- `context` allows you to group different shortcuts together, making them easier to remove on the future
 
-Removes an event listener previously registered by `kanye.on`.
+## `kanye.off(combo, options?, listener)`
+
+Removes an event listener previously registered by `kanye.on`. You'll need to specify the options again to make sure that the event listener is correctly removed.
 
 ## `kanye.clear(context?)`
 
