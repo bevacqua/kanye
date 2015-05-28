@@ -120,16 +120,15 @@ function handle (key, e) {
       return;
     }
 
+    var el = e.target;
     var selector = typeof filter === 'string';
     if (selector) {
-      return sektor.matchesSelector(e.target, filter) === false;
+      return sektor.matchesSelector(el, filter) === false;
     }
-    while (context.parentElement && context !== filter) {
-      context = context.parentElement;
+    while (el.parentElement && el !== filter) {
+      el = el.parentElement;
     }
-    if (context !== filter) {
-      return true;
-    }
+    return el !== filter;
   }
 
   function exec (handler) {

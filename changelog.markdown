@@ -1,3 +1,7 @@
+# 3.0.2 Smirk
+
+- Fixed a bug that prevented kanye from filtering on a common ancestor
+
 # 3.0.1 Mug Face
 
 - Changed the public API in favor of a single `options` object
