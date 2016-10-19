@@ -10,7 +10,9 @@ var keymap = {
 };
 var handlers = {};
 
-crossvent.add(window, 'keydown', keydown);
+if (typeof window !== 'undefined') {
+  crossvent.add(window, 'keydown', keydown);
+}
 
 function clear (context) {
   if (context) {
